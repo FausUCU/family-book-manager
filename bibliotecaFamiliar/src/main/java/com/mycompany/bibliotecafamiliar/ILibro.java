@@ -4,7 +4,7 @@ public interface ILibro {
 
     void setTitle(String title);
 
-    void setAuthors(String title);
+    void addAuthors(String title);
 
     void setGenre (String title);
     

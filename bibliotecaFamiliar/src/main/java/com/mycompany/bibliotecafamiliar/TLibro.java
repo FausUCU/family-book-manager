@@ -7,14 +7,14 @@ public class TLibro implements ILibro {
 
     private String Title;
     private List<String> Authors = new ArrayList<String>();
-    private String Genrer;
-    private String Owner; 
+    private String Genre;
+    private String Owner=null; 
 
 
-    public TLibro(String title, String author, String genrer){
+    public TLibro(String title, String author, String genre){
         this.Title=title;
         this.Authors.add(author);
-        this.Genrer=genrer;
+        this.Genre=genre;
     }
 
     @Override
@@ -23,15 +23,43 @@ public class TLibro implements ILibro {
     }
 
     @Override
-    public void setAuthors(String author){
+    public void addAuthors(String author){
         this.Authors.add(author);
+    }
+    public void removeAuthor(String author){
+        int location=this.Authors.indexOf(author);
+        while(location>-1){
+            this.Authors.remove(location);
+            location=this.Authors.indexOf(author);
+        }
+         
     }
 
     @Override
-    public void setGenre(String genrer){
-        this.Genrer=genrer;
+    public void setGenre(String genre){
+        this.Genre=genre;
     }
 
+    public void setOwner(String owner){
+        this.Owner=owner;
+    }
+
+    public String getTitle(){
+        return this.Title;
+    }
+
+    public String getOwner(){
+        return this.Owner;
+    }
+
+    public String getGenre(){
+        return this.Genre;
+    }
+
+    public List<String> getAuthorList(){
+
+        return this.Authors;
+    }
     
     
 }
