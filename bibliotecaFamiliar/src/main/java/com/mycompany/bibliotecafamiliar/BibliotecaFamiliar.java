@@ -26,8 +26,18 @@ import java.net.URISyntaxException;
 public class BibliotecaFamiliar {
 
     public static void main(String[] args) throws IOException, ParseException {
+    String TestfilePath = "test.json";
+    JSONFileManager jsonFileManager = new JSONFileManager();
+    List<JSONObject> jsonList = jsonFileManager.readListOfJsonsFromFile(TestfilePath);
+    String first=jsonList.get(1).toJSONString();
+         System.out.println(first);
+        // Display the content of the JSON list
+        for (JSONObject json : jsonList) {
+            System.out.println(json.toJSONString());
+        }
 
-    
+
+    /* 
         String filePath = "libros.json";
         String TestfilePath = "test.json";
         JSONFileManager jsonFileManager = new JSONFileManager();
@@ -35,7 +45,7 @@ public class BibliotecaFamiliar {
         TLibro testBook=new TLibro("testName", "testAutor", "testGener","testOwner",false);
         JSONObject jsonBook=testBook.getJson();
         jsonFileManager.addJsonFile(jsonBook, TestfilePath);
-       
+      */ 
 
         /* 
         String first=jsonList.get(1).toJSONString();
