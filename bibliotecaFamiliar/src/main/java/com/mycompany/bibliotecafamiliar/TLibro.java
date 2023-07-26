@@ -2,20 +2,32 @@ package com.mycompany.bibliotecafamiliar;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.json.simple.*;
+import org.json.simple.parser.*;
 
 public class TLibro implements ILibro {
 
     private String Title;
-    private List<String> Authors = new ArrayList<String>();
+    private String Author;
     private String Genre;
     private String Owner=null; 
+    private boolean Estate=false;    
 
-
+/* 
     public TLibro(String title, String author, String genre){
         this.Title=title;
         this.Authors.add(author);
         this.Genre=genre;
     }
+*/
+public TLibro(String title, String author, String genre,String owner, boolean estate){
+        this.Title=title;
+        this.Author=author;
+        this.Genre=genre;
+        this.Owner=owner;
+        this.Estate=estate;
+    }
+
 
     @Override
     public void setTitle(String title){
@@ -23,17 +35,16 @@ public class TLibro implements ILibro {
     }
 
     @Override
-    public void addAuthors(String author){
-        this.Authors.add(author);
+    public void addAuthor(String author){
+        this.Author=this.Author+" & "+author;
     }
-    public void removeAuthor(String author){
-        int location=this.Authors.indexOf(author);
-        while(location>-1){
-            this.Authors.remove(location);
-            location=this.Authors.indexOf(author);
-        }
-         
+
+    public void setAuthor(String author){
+        this.Author=author;
     }
+
+    
+    
 
     @Override
     public void setGenre(String genre){
@@ -51,15 +62,37 @@ public class TLibro implements ILibro {
     public String getOwner(){
         return this.Owner;
     }
+    public void changeEstate(){
+        if(this.Estate==false){
+            this.Estate=true;
+        }else{
+            this.Estate=false;
+        }
+    }
 
     public String getGenre(){
         return this.Genre;
     }
 
-    public List<String> getAuthorList(){
+    public String getAuthorList(){
 
-        return this.Authors;
+        return this.Author;
     }
-    
+    public JSONObject getJson(){
+        JSONObject content=new JSONObject();
+        
+        
+        if(this.Estate==false){
+            content.put("Prestado", "False");
+        }else{
+            content.put("Prestado", "True");
+        }
+        content.put("Propietario", this.Owner);
+        content.put("Genero", this.Genre);
+        content.put("Autor", this.Author);
+        content.put("Titulo", this.Title);
+
+        return content;
+    }
     
 }

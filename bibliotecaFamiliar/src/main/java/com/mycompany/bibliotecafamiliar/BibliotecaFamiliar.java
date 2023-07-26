@@ -12,8 +12,10 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URISyntaxException;
 
 
@@ -23,22 +25,33 @@ import java.net.URISyntaxException;
  */
 public class BibliotecaFamiliar {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ParseException {
 
     
-        String filePath = "C:\\Users\\faust\\Desktop\\Java\\family-book-manager\\bibliotecaFamiliar\\target\\classes\\com\\mycompany\\bibliotecafamiliar\\libros.json";
-
+        String filePath = "libros.json";
+        String TestfilePath = "test.json";
         JSONFileManager jsonFileManager = new JSONFileManager();
         List<JSONObject> jsonList = jsonFileManager.readListOfJsonsFromFile(filePath);
-
-        String first=jsonList.get(0).toJSONString();
-        System.out.println(first);
+        TLibro testBook=new TLibro("testName", "testAutor", "testGener","testOwner",false);
+        JSONObject jsonBook=testBook.getJson();
+        jsonFileManager.addJsonFile(jsonBook, TestfilePath);
+       
 
         /* 
+        String first=jsonList.get(1).toJSONString();
+         System.out.println(first);
         // Display the content of the JSON list
         for (JSONObject json : jsonList) {
             System.out.println(json.toJSONString());
         }
+        TLibro testBook=new TLibro("testName", "testAutor", "testGener");
+        String title=testBook.getTitle();
+        String author=testBook.getAuthorList().get(0);
+        String genre=testBook.getGenre();
+        System.out.println(title);
+        System.out.println(author);
+        System.out.println(genre);
+
         */
     
     }

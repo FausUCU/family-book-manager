@@ -7,6 +7,8 @@ import java.util.List;
 import org.json.simple.*;
 import org.json.simple.parser.*;
 
+
+
 public class JSONFileManager {
     private List<JSONObject> jsonFiles;
 
@@ -18,17 +20,26 @@ public class JSONFileManager {
         return jsonFiles;
     }
 
-    public void addJsonFile(JSONObject json, String filePath) {
-        jsonFiles.add(json);
+    public void addJsonFile(JSONObject json, String filePath) throws IOException, ParseException {
+        List<JSONObject> existingJsonList = readListOfJsonsFromFile(filePath);
+        existingJsonList.add(json);
+
+        JSONArray jsonArray = new JSONArray();
+        jsonArray.addAll(existingJsonList);
 
         try (FileWriter file = new FileWriter(filePath)) {
-            file.write(json.toJSONString());
-            System.out.println("JSON file added: " + filePath);
+            file.write(jsonArray.toJSONString());
+            System.out.println("JSON file updated with the new JSON object.");
         } catch (IOException e) {
             System.out.println("Error writing JSON file: " + filePath);
-            e.printStackTrace();
+            throw e;
         }
     }
+
+
+       
+    
+    
 
     public List<JSONObject> readListOfJsonsFromFile(String filePath) {
         List<JSONObject> jsonList = new ArrayList<>();
