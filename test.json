@@ -1,1 +1,8 @@
-[{"Prestado":"False","Genero":"Cuento","Propietario":"Monica,","Autor":"Morosoli, Juan Jos�","Titulo":"Perico"},{"Prestado":"False","Genero":"B.O. -   2� -  19 -","Propietario":"Monica,","Autor":"Morosoli, Juan Jos�","Titulo":"Tierra y tiempo"},{"Prestado":"False","Genero":"Cuento","Propietario":"Chacra,","Autor":"Morosoli, Juan Jos�","Titulo":"Perico"},{"Prestado":"False","Genero":"B.O. -   6� -   29 -","Propietario":"Monica,","Autor":"Motta, Miguel","Titulo":"C�digo para una muerte"},{"Prestado":"False","Genero":"Curas naturales","Propietario":"Soca,","Autor":"Motura, Dr.Diraldo Nestor","Titulo":"Aprende a curarte"},{"Prestado":"False","Genero":"Aventuras","Propietario":"Soca,","Autor":"Mountford, Ch.P.","Titulo":"Rostros bronceados y arenas rojas"},{"Prestado":"False","Genero":"Cuentos","Propietario":"Soca,","Autor":"Mov.Tacur� - Salecianos","Titulo":"Un mundo mediano"},{"Prestado":"False","Propietario":"testOwner","Genero":"testGener","Autor":"testAutor","Titulo":"testName"},{"Prestado":"False","Propietario":"testOwner","Genero":"testGener","Autor":"testAutor","Titulo":"testName"},{"Prestado":"False","Propietario":"testOwner","Genero":"testGener","Autor":"testAutor","Titulo":"testName"},{"Prestado":"False","Propietario":"testOwner","Genero":"testGener","Autor":"testAutor","Titulo":"testName"}]
+[
+    {"Prestado":"False","Genero":"Cuento","Propietario":"Pablo,","Autor":"Morosoli, Juan Jos�","Titulo":"Perico"},
+    {"Prestado":"True","Genero":"Terror","Propietario":"Monica,","Autor":"Tomas, Juan Jos�","Titulo":"Perico"},
+    {"Prestado":"False","Genero":"Romance","Propietario":"Monica,","Autor":"Morosoli, Juan Jos�","Titulo":"Cando"},
+    {"Prestado":"True","Genero":"Cuento","Propietario":"Anita,","Autor":"Pedro, Gomes","Titulo":"Random"},
+    {"Prestado":"False","Genero":"Otro","Propietario":"Monica,","Autor":"Morosoli, Juan Jos�","Titulo":"Cosa"}
+
+]

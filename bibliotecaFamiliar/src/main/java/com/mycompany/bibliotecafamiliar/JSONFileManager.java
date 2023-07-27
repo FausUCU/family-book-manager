@@ -36,6 +36,18 @@ public class JSONFileManager {
         }
     }
 
+    public List<JSONObject> getJsonObjectsWithKey(String key, String value, String filePath) {
+        List<JSONObject> matchingJsonObjects = new ArrayList<>();
+
+        List<JSONObject> existingJsonList = readListOfJsonsFromFile(filePath);
+        for (JSONObject json : existingJsonList) {
+            if (json.containsKey(key) && json.get(key).equals(value)) {
+                matchingJsonObjects.add(json);
+            }
+        }
+
+        return matchingJsonObjects;
+    }
 
        
     
