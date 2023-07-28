@@ -1,8 +1,1 @@
-[
-    {"Prestado":"False","Genero":"Cuento","Propietario":"Pablo,","Autor":"Morosoli, Juan Jos�","Titulo":"Perico"},
-    {"Prestado":"True","Genero":"Terror","Propietario":"Monica,","Autor":"Tomas, Juan Jos�","Titulo":"Perico"},
-    {"Prestado":"False","Genero":"Romance","Propietario":"Monica,","Autor":"Morosoli, Juan Jos�","Titulo":"Cando"},
-    {"Prestado":"True","Genero":"Cuento","Propietario":"Anita,","Autor":"Pedro, Gomes","Titulo":"Random"},
-    {"Prestado":"False","Genero":"Otro","Propietario":"Monica,","Autor":"Morosoli, Juan Jos�","Titulo":"Cosa"}
-
-]
+[{"Prestado":"False ","Codigo":1,"Genero":"Poesía","Autor":"A.E.D.I.","Titulo":"Uruguay Poesía 1989"},{"Prestado":"False ","Codigo":2,"Genero":"B.O. -   6ª -   27 -","Propietario":"Monica,","Autor":"Abella, Alcides","Titulo":"El país de los uruguayos - crónicas -"},{"Prestado":"False ","Codigo":3,"Genero":"B.O. -   2ª -  30 -","Propietario":"Monica,","Autor":"Abella, Alcides","Titulo":"Panorama del cuento boliviano"},{"Prestado":"False ","Codigo":4,"Genero":"Historia","Propietario":"Chacra,","Autor":"Abella, Gonzalo","Titulo":"Artigas, el resplandor desconodio"},{"Prestado":"False ","Codigo":999,"Genero":"Periodismo","Propietario":"Soca,","Autor":"Abraham, Tomas","Titulo":"Titulo Editado"}]

@@ -36,22 +36,64 @@ public class JSONFileManager {
         }
     }
 
-    public List<JSONObject> getJsonObjectsWithKey(String key, String value, String filePath) {
+    public List<JSONObject> getJsonObjectsWithKey(String key, String value, String filePath) throws ParseException, IOException {
         List<JSONObject> matchingJsonObjects = new ArrayList<>();
 
         List<JSONObject> existingJsonList = readListOfJsonsFromFile(filePath);
         for (JSONObject json : existingJsonList) {
-            if (json.containsKey(key) && json.get(key).equals(value)) {
-                matchingJsonObjects.add(json);
+            if (json.containsKey(key)) {
+                Object jsonValue = json.get(key);
+                if (jsonValue instanceof String && jsonValue.equals(value)) {
+                    matchingJsonObjects.add(json);
+                } else if (jsonValue instanceof Number && jsonValue.toString().equals(value)) {
+                    matchingJsonObjects.add(json);
+                }
             }
         }
 
         return matchingJsonObjects;
     }
-
+    private void updateJsonValue(JSONObject json, String key, Object newValue) {
+        json.put(key, newValue);
+    }
        
-    
-    
+    public boolean findAndEditJsonObject(String key, String valueToFind, String keyToEdit, String newValue, String filePath) {
+        try {
+            List<JSONObject> existingJsonList = readListOfJsonsFromFile(filePath);
+            for (JSONObject json : existingJsonList) {
+                if (json.containsKey(key)) {
+                    Object jsonValue = json.get(key);
+                    if (jsonValue instanceof String && jsonValue.equals(valueToFind)) {
+                        updateJsonValue(json, keyToEdit, newValue);
+                        saveJsonListToFile(existingJsonList, filePath);
+                        return true; // Successfully found and edited the JSON object
+                    } else if (jsonValue instanceof Number && jsonValue.toString().equals(valueToFind)) {
+                        updateJsonValue(json, keyToEdit, parseNumericValue(newValue));
+                        saveJsonListToFile(existingJsonList, filePath);
+                        return true; // Successfully found and edited the JSON object
+                    }
+                }
+            }
+        } catch (IOException | ParseException e) {
+            System.out.println("Error reading/writing JSON file: " + filePath);
+            e.printStackTrace();
+        }
+
+        return false; 
+    }
+
+    private void saveJsonListToFile(List<JSONObject> jsonList, String filePath) throws ParseException, IOException {
+        JSONArray jsonArray = new JSONArray();
+        jsonArray.addAll(jsonList);
+
+        try (FileWriter file = new FileWriter(filePath)) {
+            file.write(jsonArray.toJSONString());
+            System.out.println("JSON file updated with the edited JSON object.");
+        } catch (IOException e) {
+            System.out.println("Error writing JSON file: " + filePath);
+            throw e;
+        }
+    }
 
     public List<JSONObject> readListOfJsonsFromFile(String filePath) {
         List<JSONObject> jsonList = new ArrayList<>();
@@ -76,5 +118,20 @@ public class JSONFileManager {
         }
 
         return jsonList;
+    }
+
+    
+    private Object parseNumericValue(String value) {
+        try {
+            if (value.contains(".")) {
+                return Double.parseDouble(value);
+            } else {
+                return Long.parseLong(value);
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Error parsing numeric value: " + value);
+            e.printStackTrace();
+        }
+        return value; 
     }
 }

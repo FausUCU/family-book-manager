@@ -31,13 +31,9 @@ public class BibliotecaFamiliar {
         JSONFileManager jsonFileManager = new JSONFileManager();
         List<JSONObject> jsonListEdith = jsonFileManager.getJsonObjectsWithKey("Genero","Cuento",testFilePath);
         System.out.println(jsonListEdith);
-         System.out.println("==============================================");
-        List<JSONObject> jsonListEdith2 = jsonFileManager.getJsonObjectsWithKey("Prestado","True",testFilePath);
-        System.out.println(jsonListEdith2);
-        System.out.println("==============================================");
-
-        List<JSONObject> jsonListEdith3 = jsonFileManager.getJsonObjectsWithKey("Autor","Morosoli, Juan Jos\uFFFD",testFilePath);
-        System.out.println(jsonListEdith3);
+        boolean editResult=jsonFileManager.findAndEditJsonObject("Codigo","5","Codigo","999",testFilePath);
+        System.out.println(editResult);
+        
         
         
        
