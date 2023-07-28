@@ -31,15 +31,8 @@ public class BibliotecaFamiliar {
         JSONFileManager jsonFileManager = new JSONFileManager();
         List<JSONObject> jsonListEdith = jsonFileManager.getJsonObjectsWithKey("Genero","Cuento",testFilePath);
         System.out.println(jsonListEdith);
-        boolean editResult=jsonFileManager.findAndEditJsonObject("Codigo","5","Codigo","999",testFilePath);
-        System.out.println(editResult);
         
-        
-        
-       
-    
+ 
     }
-    
-   
-    
+  
 }
