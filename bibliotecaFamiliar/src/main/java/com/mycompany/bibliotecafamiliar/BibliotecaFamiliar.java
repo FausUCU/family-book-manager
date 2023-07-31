@@ -29,7 +29,7 @@ public class BibliotecaFamiliar {
 
         String testFilePath = "test.json";
         JSONFileManager jsonFileManager = new JSONFileManager();
-        List<JSONObject> jsonListEdith = jsonFileManager.getJsonObjectsWithKey("Genero","Cuento",testFilePath);
+        List<JSONObject> jsonListEdith = jsonFileManager.getJsonObjectsWithKey("Genero","Historia",testFilePath);
         System.out.println(jsonListEdith);
         
  
