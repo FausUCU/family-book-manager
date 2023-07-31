@@ -27,11 +27,7 @@ public class BibliotecaFamiliar {
 
     public static void main(String[] args) throws IOException, ParseException {
 
-        String testFilePath = "test.json";
-        JSONFileManager jsonFileManager = new JSONFileManager();
-        List<JSONObject> jsonListEdith = jsonFileManager.getJsonObjectsWithKey("Genero","Historia",testFilePath);
-        System.out.println(jsonListEdith);
-        
+   
  
     }
   

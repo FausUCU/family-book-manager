@@ -88,9 +88,9 @@ public TLibro(String title, String author, String genre,String owner, boolean es
         
         
         if(this.Estate==false){
-            content.put("Prestado", "False");
+            content.put("Prestado", false);
         }else{
-            content.put("Prestado", "True");
+            content.put("Prestado", true);
         }
         content.put("Propietario", this.Owner);
         content.put("Genero", this.Genre);
