@@ -29,8 +29,12 @@ public class BibliotecaFamiliar {
 
         String testFilePath = "test.json";
         JSONFileManager jsonFileManager = new JSONFileManager();
-        List<JSONObject> jsonListEdith = jsonFileManager.getJsonObjectsWithKey("Genero","Historia",testFilePath);
+        /* 
+        List<JSONObject> jsonListEdith = jsonFileManager.getJsonObjectsWithKey("Codigo",100,testFilePath);
         System.out.println(jsonListEdith);
+        boolean result=jsonFileManager.findAndEditJsonObject("Codigo",99,"Genero","ngjgblsjbfljsf",testFilePath);
+        System.out.println(result);
+        */
         
  
     }

@@ -36,16 +36,20 @@ public class JSONFileManager {
         }
     }
 
-    public List<JSONObject> getJsonObjectsWithKey(String key, String value, String filePath) throws ParseException, IOException {
+    public List<JSONObject> getJsonObjectsWithKey(String key, Object value, String filePath) throws ParseException, IOException {
         List<JSONObject> matchingJsonObjects = new ArrayList<>();
 
         List<JSONObject> existingJsonList = readListOfJsonsFromFile(filePath);
         for (JSONObject json : existingJsonList) {
             if (json.containsKey(key)) {
                 Object jsonValue = json.get(key);
-                if (jsonValue instanceof String && jsonValue.equals(value)) {
-                    matchingJsonObjects.add(json);
-                } else if (jsonValue instanceof Number && jsonValue.toString().equals(value)) {
+                if (jsonValue instanceof Number && value instanceof Number) {
+                    Number jsonNumber = (Number) jsonValue;
+                    Number searchNumber = (Number) value;
+                    if (jsonNumber.doubleValue() == searchNumber.doubleValue()) {
+                        matchingJsonObjects.add(json);
+                    }
+                } else if (jsonValue != null && jsonValue.equals(value)) {
                     matchingJsonObjects.add(json);
                 }
             }
@@ -53,24 +57,29 @@ public class JSONFileManager {
 
         return matchingJsonObjects;
     }
+
     private void updateJsonValue(JSONObject json, String key, Object newValue) {
         json.put(key, newValue);
     }
        
-    public boolean findAndEditJsonObject(String key, String valueToFind, String keyToEdit, String newValue, String filePath) {
+    public boolean findAndEditJsonObject(String key, Object valueToFind, String keyToEdit, Object newValue, String filePath) {
         try {
             List<JSONObject> existingJsonList = readListOfJsonsFromFile(filePath);
             for (JSONObject json : existingJsonList) {
                 if (json.containsKey(key)) {
                     Object jsonValue = json.get(key);
-                    if (jsonValue instanceof String && jsonValue.equals(valueToFind)) {
+                    if (jsonValue instanceof Number && valueToFind instanceof Number) {
+                        Number jsonNumber = (Number) jsonValue;
+                        Number searchNumber = (Number) valueToFind;
+                        if (jsonNumber.doubleValue() == searchNumber.doubleValue()) {
+                            updateJsonValue(json, keyToEdit, newValue);
+                            saveJsonListToFile(existingJsonList, filePath);
+                            return true; 
+                        }
+                    } else if (jsonValue != null && jsonValue.equals(valueToFind)) {
                         updateJsonValue(json, keyToEdit, newValue);
                         saveJsonListToFile(existingJsonList, filePath);
-                        return true; // Successfully found and edited the JSON object
-                    } else if (jsonValue instanceof Number && jsonValue.toString().equals(valueToFind)) {
-                        updateJsonValue(json, keyToEdit, parseNumericValue(newValue));
-                        saveJsonListToFile(existingJsonList, filePath);
-                        return true; // Successfully found and edited the JSON object
+                        return true; 
                     }
                 }
             }
