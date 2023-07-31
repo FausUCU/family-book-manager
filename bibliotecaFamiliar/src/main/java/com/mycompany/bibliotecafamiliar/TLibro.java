@@ -11,7 +11,8 @@ public class TLibro implements ILibro {
     private String Author;
     private String Genre;
     private String Owner=null; 
-    private boolean Estate=false;    
+    private boolean Estate=false;  
+    private int Code;  
 
 /* 
     public TLibro(String title, String author, String genre){
@@ -20,12 +21,13 @@ public class TLibro implements ILibro {
         this.Genre=genre;
     }
 */
-public TLibro(String title, String author, String genre,String owner, boolean estate){
+public TLibro(String title, String author, String genre,String owner, boolean estate, int code){
         this.Title=title;
         this.Author=author;
         this.Genre=genre;
         this.Owner=owner;
         this.Estate=estate;
+        this.Code=code;
     }
 
 
@@ -73,6 +75,9 @@ public TLibro(String title, String author, String genre,String owner, boolean es
     public String getGenre(){
         return this.Genre;
     }
+    public int getCode(){
+        return this.Code;
+    }
 
     public String getAuthorList(){
 
@@ -91,6 +96,7 @@ public TLibro(String title, String author, String genre,String owner, boolean es
         content.put("Genero", this.Genre);
         content.put("Autor", this.Author);
         content.put("Titulo", this.Title);
+        content.put("Codigo", this.Code);
 
         return content;
     }
